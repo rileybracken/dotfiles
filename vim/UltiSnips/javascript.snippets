@@ -1,0 +1,99 @@
+snippet newSmart
+import React from 'react';
+
+export default class ${1:ClassName} extends React.Component {
+	render() {
+		return (
+			<pre>{ JSON.stringify(this.props, null, 2) }</pre>
+		);
+	}
+}
+endsnippet
+
+snippet connect
+const mapStateToProps = _ => ({});
+const mapActionsToProps = _ => ({});
+
+export default connect(mapStateToProps, mapActionsToProps)($1);
+endsnippet
+
+snippet newJest
+/* eslint-env node, jest */
+
+import {} from '../${1:TestName}';
+
+jest.autoMockOff();
+
+describe('$1 tests', () => {
+  it('should write tests for $1', () => expect(true).toBeTruthy());
+});
+endsnippet
+
+snippet rnSmart
+import React from 'react';
+import { View, Text } from 'react-native';
+
+class ${1:ClassName} extends React.Component {
+	render() {
+		return (
+			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+				<Text>$1</Text>
+			</View>
+		);
+	}
+}
+
+export default $1;
+endsnippet
+
+snippet newDumb
+import React from 'react';
+
+const ${1:ClassName} = () => (
+	<h1>$1</h1>
+);
+
+export default $1;
+endsnippet
+
+snippet rnDumb
+import React from 'react';
+import { View, Text, } from 'react-native';
+
+const ${1:ClassName} = () => (
+	<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+		<Text>$1</Text>
+	</View>
+);
+
+export default $1;
+endsnippet
+
+snippet import
+import ${1:Name} from '${2:where}';
+endsnippet
+
+snippet jsdoc
+/**
+ * $1
+ */
+endsnippet
+
+snippet renderFunc
+endsnippet
+
+snippet getFunc
+endsnippet
+
+snippet onFunc
+endsnippet
+
+snippet cwm
+endsnippet
+
+snippet cdm
+endsnippet
+
+snippet newPropType
+${1:name}: React.PropTypes.${2:type}.${3:required}
+endsnippet
