@@ -1,4 +1,4 @@
-# Riley Brackens's dot files
+# Riley Bracken's dot files
 
 These are config files to set up a system the way I like it.
 
