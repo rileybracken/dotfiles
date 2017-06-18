@@ -8,12 +8,13 @@
   call vundle#begin()
 
   Plugin 'VundleVim/Vundle.vim'
+  Plugin 'rafi/awesome-vim-colorschemes'
   Plugin 'mhartington/oceanic-next'
   Plugin 'honza/vim-snippets'
-  Plugin 'mxw/vim-jsx'
   Plugin 'isRuslan/vim-es6'
   Plugin 'tpope/vim-fugitive'
   Plugin 'pangloss/vim-javascript'
+  Plugin 'neoclide/vim-jsx-improve'
   Plugin 'othree/html5.vim'
   Plugin 'hail2u/vim-css3-syntax'
   Plugin 'jelera/vim-javascript-syntax'
@@ -42,8 +43,8 @@
 " SETTINGS
 "====================
 
-  colorscheme OceanicNext
-  let g:airline_theme='oceanicnext'
+  colorscheme solarized8_dark_flat
+  let g:airline_theme='solarized'
 
   set t_Co=256
   set backspace=2
