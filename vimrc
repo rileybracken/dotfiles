@@ -8,48 +8,50 @@
   call vundle#begin()
 
   Plugin 'VundleVim/Vundle.vim'
-  Plugin 'rafi/awesome-vim-colorschemes'
-  Plugin 'mhartington/oceanic-next'
-  Plugin 'honza/vim-snippets'
-  Plugin 'isRuslan/vim-es6'
+
+  " General
   Plugin 'tpope/vim-fugitive'
-  Plugin 'pangloss/vim-javascript'
-  Plugin 'neoclide/vim-jsx-improve'
-  Plugin 'othree/html5.vim'
-  Plugin 'hail2u/vim-css3-syntax'
-  Plugin 'jelera/vim-javascript-syntax'
   Plugin 'tpope/vim-surround'
-  Plugin 'rking/ag.vim'
-  Plugin 'ctrlpvim/ctrlp.vim'
-  Plugin 'facebook/vim-flow'
-  Plugin 'tikhomirov/vim-glsl'
-  Plugin 'altercation/vim-colors-solarized'
-  Plugin 'guns/xterm-color-table.vim'
   Plugin 'vim-airline/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
-  Plugin 'elixir-lang/vim-elixir'
   Plugin 'scrooloose/syntastic'
-  Plugin 'scrooloose/nerdcommenter'
-  Plugin 'trevordmiller/nova-vim'
-  Plugin 'reedes/vim-colors-pencil'
   Plugin 'janko-m/vim-test'
-  Plugin 'shawncplus/Vim-toCterm'
+  Plugin 'scrooloose/nerdcommenter'
+  Plugin 'ntpeters/vim-better-whitespace'
+  Plugin 'tommcdo/vim-exchange'
+  Plugin 'jeetsukumaran/vim-buffergator'
+  Plugin 'wincent/command-t'
+
+  " Syntax
   Plugin 'digitaltoad/vim-pug'
+  Plugin 'neoclide/vim-jsx-improve'
+  Plugin 'othree/html5.vim'
+  Plugin 'jelera/vim-javascript-syntax'
+  Plugin 'tikhomirov/vim-glsl'
+  Plugin 'elixir-lang/vim-elixir'
+
+  " Colorschemes
+  Plugin 'rafi/awesome-vim-colorschemes'
 
   call vundle#end()
-  filetype plugin indent on
 
 "====================
 " SETTINGS
 "====================
+  set wildignore+=.git,*.jpg,*.png,*.zip,*.tar.gz,.DS_Store,tmp/**,node_modules
 
+  " Colors
   colorscheme solarized8_dark_flat
   let g:airline_theme='solarized'
-
   set t_Co=256
-  set backspace=2
   syntax on
+
+  set backspace=2
+
+  filetype on
   filetype indent on
+  filetype plugin on
+
   set autoindent
   set t_Co=256
   set background=dark
@@ -75,6 +77,15 @@
   set splitbelow
   set splitright
 
+  " Highlight 100th column
+  set colorcolumn=100
+  "
+  " Ignore case for fast-typed commands.
+  command Q q
+  command W w
+  command WQ wq
+  command Wq wq
+
 "====================
 " SYNTAX
 "====================
@@ -98,15 +109,6 @@
   let g:jsx_ext_required = 0
 
 "====================
-" CtrlP
-"====================
-  "Change the default mapping and the default command to invoke CtrlP:
-  let g:ctrlp_map = '<c-p>'
-  let g:ctrlp_cmd = 'CtrlP'
-  let g:ctrlp_working_path_mode = 'ra'
-  let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|_build)|(\.(swp|ico|git|svn))$'
-
-"====================
 " flow
 "====================
   let g:flow#autoclose = 1
@@ -120,16 +122,6 @@
   set smartcase
 
   let g:jsx_ext_required = 0
-
-  " The Silver Searcher
-  if executable('ag')
-    " Use ag over grep
-    set grepprg=ag\ --nogroup\ --nocolor
-
-    let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-  else
-    let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
-  endif
 
   function! FindAllMultipleCursors( type )
       " Yank the (w)ord under the cursor into reg z. If we (were) in visual mode,
@@ -244,3 +236,5 @@
 " NerdCommenter
 "====================
   let g:NERDSpaceDelims = 1
+
+  nnoremap <C-p> :CommandT <CR>
