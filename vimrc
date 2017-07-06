@@ -19,8 +19,7 @@
   Plugin 'scrooloose/nerdcommenter'
   Plugin 'ntpeters/vim-better-whitespace'
   Plugin 'tommcdo/vim-exchange'
-  Plugin 'jeetsukumaran/vim-buffergator'
-  Plugin 'wincent/command-t'
+  Plugin 'ctrlpvim/ctrlp.vim'
 
   " Syntax
   Plugin 'digitaltoad/vim-pug'
@@ -38,8 +37,6 @@
 "====================
 " SETTINGS
 "====================
-  set wildignore+=.git,*.jpg,*.png,*.zip,*.tar.gz,.DS_Store,tmp/**,node_modules
-
   " Colors
   colorscheme solarized8_dark_flat
   let g:airline_theme='solarized'
@@ -77,9 +74,11 @@
   set splitbelow
   set splitright
 
+  set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+
   " Highlight 100th column
   set colorcolumn=100
-  "
+
   " Ignore case for fast-typed commands.
   command Q q
   command W w
@@ -93,6 +92,12 @@
   autocmd BufRead,BufNewFile *.xaml :set filetype=xml
   autocmd BufRead,BufNewFile *.conf set filetype=json
   autocmd BufNewFile,BufRead *.region,*.item,*.list,*.block set filetype=html.mustache syntax=mustache
+
+ " SquareSpace templates
+  autocmd BufRead,BufNewFile *.block set filetype=html
+  autocmd BufRead,BufNewFile *.item set filetype=html
+  autocmd BufRead,BufNewFile *.list set filetype=html
+  autocmd BufRead,BufNewFile *.conf set filetype=javascript
 
 "====================
 " SNIPPETS
@@ -183,6 +188,8 @@
   map <C-K> <C-W>K
   map <C-H> <C-W>H
   map <C-L> <C-W>L
+  map <C-c> "*y
+
 
   set wildignore+=*/_bundle/*
 
@@ -228,6 +235,11 @@
   nnoremap <C-l> <C-w>l
 
 "====================
+" Search
+"====================
+  set grepprg=ag
+
+"====================
 " Prettier
 "====================
   autocmd FileType javascript set formatprg=prettier\ --stdin
@@ -237,4 +249,11 @@
 "====================
   let g:NERDSpaceDelims = 1
 
-  nnoremap <C-p> :CommandT <CR>
+"====================
+" ctrlp
+"====================
+  let g:ctrlp_map = '<c-p>'
+  let g:ctrlp_cmd = 'CtrlP'
+  let g:ctrlp_working_path_mode = 'ra'
+  let g:ctrlp_switch_buffer = 'et'
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
