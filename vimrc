@@ -11,6 +11,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " General
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -258,6 +260,16 @@ autocmd FileType javascript set formatprg=prettier\ --stdin
 " NerdCommenter
 "====================
 let g:NERDSpaceDelims = 1
+
+"====================
+" unimpaired
+"====================
+" Bubble single lines
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Bubble multiple lines
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 
 "====================
 " ctrlp
