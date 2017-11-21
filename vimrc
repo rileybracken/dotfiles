@@ -84,6 +84,7 @@ set colorcolumn=100
 
 " Ignore case for fast-typed commands.
 command Q q
+command Set set
 command W w
 command WQ wq
 command Wq wq
