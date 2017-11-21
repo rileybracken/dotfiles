@@ -29,6 +29,7 @@ Plugin 'othree/html5.vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'heavenshell/vim-jsdoc'
 Bundle 'apple/swift', { 'rtp' : 'utils/vim' }
 
 " Colorschemes
