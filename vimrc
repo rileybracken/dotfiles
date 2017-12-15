@@ -32,7 +32,7 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'heavenshell/vim-jsdoc'
-Bundle 'apple/swift', { 'rtp' : 'utils/vim' }
+Plugin 'altercation/vim-colors-solarized'
 
 " Colorschemes
 Plugin 'rafi/awesome-vim-colorschemes'
@@ -43,10 +43,11 @@ call vundle#end()
 " SETTINGS
 "====================
 " Colors
-colorscheme solarized8_dark_flat
-let g:airline_theme='solarized'
+syntax enable
+set background=dark
+colorscheme hybrid
+let g:airline_theme='hybrid'
 set t_Co=256
-syntax on
 
 set backspace=2
 
