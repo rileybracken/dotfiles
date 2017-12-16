@@ -1,5 +1,5 @@
 [user]
-	name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+	name = Riley Bracken
 	email = rileybracken@gmail.com
 [alias]
 	co = checkout
