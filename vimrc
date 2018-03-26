@@ -16,13 +16,13 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'scrooloose/syntastic'
 Plugin 'janko-m/vim-test'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gfontenot/vim-xcode'
+Plugin 'wakatime/vim-wakatime'
 
 " Syntax
 Plugin 'digitaltoad/vim-pug'
@@ -33,6 +33,9 @@ Plugin 'tikhomirov/vim-glsl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'prettier/vim-prettier'
+Plugin 'flowtype/vim-flow'
+Plugin 'w0rp/ale'
 
 " Colorschemes
 Plugin 'rafi/awesome-vim-colorschemes'
@@ -130,7 +133,7 @@ let g:jsx_ext_required = 0
 "====================
 " flow
 "====================
-let g:flow#autoclose = 1
+" let g:flow#autoclose = 1
 
 "====================
 " SEARCH
@@ -192,6 +195,8 @@ map <Leader>ra :%s/
 map <Leader>w <C-w>w
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>e :Explore<cr>
+map <Leader>gn :e ~/Dropbox (Underbelly)/notes<cr>
+map <Leader>gj :e ~/Dropbox (Underbelly)/notes/journal/<C-r>=strftime("%Y-%m-%d") . '.md'<cr><cr>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tc :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
@@ -207,33 +212,7 @@ map <C-c> "*y
 set wildignore+=*/_bundle/*
 
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-function! SyntasticESlintChecker()
-  let l:npm_bin = ''
-  let l:eslint = 'eslint'
-
-  if executable('npm')
-    let l:npm_bin = split(system('npm bin'), '\n')[0]
-  endif
-
-  if strlen(l:npm_bin) && executable(l:npm_bin . '/eslint')
-    let l:eslint = l:npm_bin . '/eslint'
-  endif
-
-  let b:syntastic_javascript_eslint_exec = l:eslint
-endfunction
-
-let g:syntastic_javascript_checkers = ["eslint"]
-autocmd FileType javascript :call SyntasticESlintChecker()
-
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let syntastic_mode_map = { 'passive_filetypes': ['html', 'scss'] }
 
 " Get off my lawn
 nnoremap <Left> :echoe "Use h"<CR>
@@ -280,3 +259,21 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+"====================
+" Prettier
+"====================
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.graphql Prettier
+
+let g:ale_linters = {
+\  'javascript': ['flow', 'eslint']
+\}
+
+let g:ale_fixers = {
+\  'javascript': ['prettier', 'eslint']
+\}
+
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_format = '%linter%: %s [%severity%]'
