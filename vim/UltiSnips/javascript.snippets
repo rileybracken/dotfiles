@@ -1,7 +1,13 @@
-snippet newSmart
-import React from 'react';
+snippet classCmpt
+// @flow
+import * as React from 'react';
 
-export default class ${1:ClassName} extends React.Component {
+type Props = {};
+type State = {};
+
+export default class ${1:ClassName} extends React.Component<Props, State> {
+	state = {};
+
 	render() {
 		return (
 			<pre>{ JSON.stringify(this.props, null, 2) }</pre>
@@ -10,90 +16,41 @@ export default class ${1:ClassName} extends React.Component {
 }
 endsnippet
 
-snippet connect
-const mapStateToProps = _ => ({});
-const mapActionsToProps = _ => ({});
+snippet buildQuery
+import { gql } from 'apollo-boost';
 
-export default connect(mapStateToProps, mapActionsToProps)($1);
+export default gql`
+$1
+`;
 endsnippet
 
-snippet newJest
-/* eslint-env node, jest */
+snippet fnCmpt
+// @flow
+import * as React from 'react';
 
-import {} from '../${1:TestName}';
+type Props = {};
 
-jest.autoMockOff();
-
-describe('$1 tests', () => {
-  it('should write tests for $1', () => expect(true).toBeTruthy());
-});
-endsnippet
-
-snippet rnSmart
-import React from 'react';
-import { View, Text } from 'react-native';
-
-class ${1:ClassName} extends React.Component {
-	render() {
-		return (
-			<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-				<Text>$1</Text>
-			</View>
-		);
-	}
-}
-
-export default $1;
-endsnippet
-
-snippet newDumb
-import React from 'react';
-
-const ${1:ClassName} = () => (
-	<h1>$1</h1>
-);
-
-export default $1;
-endsnippet
-
-snippet rnDumb
-import React from 'react';
-import { View, Text, } from 'react-native';
-
-const ${1:ClassName} = () => (
-	<View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-		<Text>$1</Text>
-	</View>
+const ${1:ClassName} = props => (
+	<pre>{JSON.stringify(props, null, 2)}</pre>
 );
 
 export default $1;
 endsnippet
 
 snippet import
-import ${1:Name} from '${2:where}';
+import ${1:Name} from '${2:where}/$1';
 endsnippet
 
-snippet jsdoc
-/**
- * $1
- */
-endsnippet
+snippet test
+/* eslint-disable */
+import React from 'react';
+import { render } from 'react-testing-library';
+import ${1:ComponentName} from '@${2:components}/$1';
 
-snippet renderFunc
-endsnippet
-
-snippet getFunc
-endsnippet
-
-snippet onFunc
-endsnippet
-
-snippet cwm
-endsnippet
-
-snippet cdm
-endsnippet
-
-snippet newPropType
-${1:name}: React.PropTypes.${2:type}.${3:required}
+describe('$1 renders', () => {
+	it('without props', () => {
+		const { container } = render(<$1 />);
+		expect(container.firstChild).toMatchSnapshot();
+	});
+});
 endsnippet

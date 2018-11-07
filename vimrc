@@ -22,7 +22,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gfontenot/vim-xcode'
-Plugin 'wakatime/vim-wakatime'
+Plugin 'SirVer/ultisnips'
 
 " Syntax
 Plugin 'digitaltoad/vim-pug'
@@ -197,6 +197,10 @@ map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>e :Explore<cr>
 map <Leader>gn :e ~/Dropbox (Underbelly)/notes<cr>
 map <Leader>gj :e ~/Dropbox (Underbelly)/notes/journal/<C-r>=strftime("%Y-%m-%d") . '.md'<cr><cr>
+map <Leader>gtf :vsp <C-R>=expand('%:p:h') . '/'<CR><cr>
+map <Leader>gts :vsp <C-R>=expand('%:p:h') . '/styles.js'<CR><cr>
+map <Leader>gtt :vsp <C-R>=expand('%:p:h') . '/__tests__/index.js'<CR><cr>
+map <Leader>gtn :vsp <C-R>=expand('%:p:h') . '/__tests__/__snapshots__/index.js.snap'<CR><cr>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tc :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
@@ -232,11 +236,6 @@ nnoremap <C-l> <C-w>l
 set grepprg=ag
 
 "====================
-" Prettier
-"====================
-autocmd FileType javascript set formatprg=prettier\ --stdin
-
-"====================
 " NerdCommenter
 "====================
 let g:NERDSpaceDelims = 1
@@ -263,15 +262,15 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 "====================
 " Prettier
 "====================
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.graphql Prettier
+let g:ale_fix_on_save = 1
 
 let g:ale_linters = {
 \  'javascript': ['flow', 'eslint']
 \}
 
 let g:ale_fixers = {
-\  'javascript': ['prettier', 'eslint']
+\  'javascript': ['prettier'],
+\  'yaml': ['prettier']
 \}
 
 let g:ale_sign_error = '>>'
