@@ -74,7 +74,9 @@ set foldmethod=indent
 set foldnestmax=10
 set nofoldenable
 set foldlevel=2
-autocmd BufRead,BufNewFile *.md setlocal spell
+
+" Format markdown to autowrap and call out spelling errors
+au BufRead,BufNewFile *.md setlocal spell textwidth=60
 
 set laststatus=2
 set listchars=tab:▸\ ,eol:¬
