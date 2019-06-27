@@ -6,7 +6,6 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-
 # Aliases
 alias tlog='tail -f log/development.log'
 alias wmip='ipconfig getifaddr en0'

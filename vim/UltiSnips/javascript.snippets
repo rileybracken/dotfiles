@@ -30,7 +30,7 @@ import * as React from 'react';
 
 type Props = {};
 
-const ${1:ClassName} = props => (
+const ${1:ClassName} = (props: Props) => (
 	<pre>{JSON.stringify(props, null, 2)}</pre>
 );
 
@@ -41,16 +41,24 @@ snippet import
 import ${1:Name} from '${2:where}/$1';
 endsnippet
 
-snippet test
-/* eslint-disable */
+snippet startTest
 import React from 'react';
-import { render } from 'react-testing-library';
+import { render, cleanup } from 'react-testing-library';
 import ${1:ComponentName} from '@${2:components}/$1';
 
 describe('$1 renders', () => {
-	it('without props', () => {
+	afterEach(cleanup);
+
+	test('without props', () => {
 		const { container } = render(<$1 />);
 		expect(container.firstChild).toMatchSnapshot();
 	});
 });
+endsnippet
+
+snippet test
+	test('${1:TestTitle}', () => {
+		const { container } = render(<${2:ComponentName} />);
+		expect(container.firstChild).toMatchSnapshot();
+	});
 endsnippet
