@@ -3,6 +3,7 @@
 These are config files to set up a system the way I like it.
 
 ## Pre-Install
+Install Iterm. https://www.iterm2.com/
 
 Open the gitconfig file and change lines 2 and 3 (name and email).
 
