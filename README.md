@@ -15,9 +15,10 @@ Setup oh-my-zsh:
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
-Setup rbenv:
+Setup rbenv & [nvm](https://github.com/nvm-sh/nvm):
 ```
 $ brew install rbenv
+$ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.0/install.sh | bash
 ```
 
 Setup Vundle:
@@ -65,5 +66,5 @@ set that imported profile as your default.
 ![appearance panes settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-panes-settings.png?raw=true)
 ![appearance dimming settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-dimming-settings.png?raw=true)
 ![general closing settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/general-closing-settings.png?raw=true)
-![keys hotkeys settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/keys-hotkeys-settings.png?raw=true)
+![keys hotkeys settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/keys-hotkey-settings.png?raw=true)
 
