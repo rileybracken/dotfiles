@@ -46,6 +46,7 @@ Plugin 'pantharshit00/vim-prisma'
 Plugin 'joshdick/onedark.vim'
 Plugin 'haishanh/night-owl.vim'
 Plugin 'cocopon/iceberg.vim'
+Plugin 'adrian5/oceanic-next-vim'
 
 call vundle#end()
 
@@ -60,9 +61,7 @@ if (has("termguicolors"))
 endif
 
 syntax enable
-colorscheme iceberg
-" hi Normal guibg=NONE ctermbg=NONE
-" hi tsxCloseTagName ctermfg=110
+colorscheme oceanicnext
 
 set backspace=2
 
