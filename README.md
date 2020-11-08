@@ -40,7 +40,7 @@ $ git@github.com:rileybracken/dotfiles.git
 
 cd into the directory
 ```
-cd ~/Code/dotfiles
+$ cd ~/Code/dotfiles
 ```
 
 Install the dotfiles, this will symlink the dotfiles
@@ -54,19 +54,8 @@ $ rake install
 Install Vundle plugins Run `:BundleInstall` in vim.
 
 ## iTerm configuration
+Import the `iterm.json` file in `~/Code/dotfiles/iterm.json`
+by going to `profiles > other actions (bottom left)` then
+set that imported profile as your default.
 
-### General Settings
-
-* Turn off the "Confirm on quit" setting
-
-### Appearance Settings
-
-* Load the Hybrid.itermcolors color scheme found in this directory.
-
-### Profiles
-
-### Keys
-
-### Arrangements
-
-TODO: Add screenshots of the iTerm configuration.
+### Settings
