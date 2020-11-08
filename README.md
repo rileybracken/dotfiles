@@ -59,3 +59,5 @@ by going to `profiles > other actions (bottom left)` then
 set that imported profile as your default.
 
 ### Settings
+![appearance dimming settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-dimming-settings.png?raw=true)
+
