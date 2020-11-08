@@ -58,6 +58,12 @@ Import the `iterm.json` file in `~/Code/dotfiles/iterm.json`
 by going to `profiles > other actions (bottom left)` then
 set that imported profile as your default.
 
-### Settings
+### Preferences
+![appearance general settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-general-settings.png?raw=true)
+![appearance windows settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-windows-settings.png?raw=true)
+![appearance tabs settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-tabs-settings.png?raw=true)
+![appearance panes settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-panes-settings.png?raw=true)
 ![appearance dimming settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/appearance-dimming-settings.png?raw=true)
+![general closing settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/general-closing-settings.png?raw=true)
+![keys hotkeys settings](https://github.com/rileybracken/dotfiles/blob/master/screenshots/keys-hotkeys-settings.png?raw=true)
 
