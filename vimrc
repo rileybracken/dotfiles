@@ -23,6 +23,7 @@ Plugin 'tommcdo/vim-exchange'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'gfontenot/vim-xcode'
 Plugin 'SirVer/ultisnips'
+Plugin 'dense-analysis/ale'
 
 " Syntax
 Plugin 'jxnblk/vim-mdx-js'
@@ -31,8 +32,6 @@ Plugin 'othree/html5.vim'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'heavenshell/vim-jsdoc'
-Plugin 'prettier/vim-prettier'
-Plugin 'w0rp/ale'
 
 " React, Typescript, Graphql
 Plugin 'pangloss/vim-javascript'
@@ -123,7 +122,6 @@ au BufNewFile,BufRead *.prisma setfiletype graphql
 
 augroup FiletypeGroup
   autocmd!
-  " .ts is a Typescript file
 augroup END
 
 "====================
@@ -173,14 +171,6 @@ let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
 :command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
 
 let g:jsx_ext_required = 0
-
-"====================
-" flow
-"====================
-" let g:flow#autoclose = 1
-" Enable syntax highlighting for flow
-let g:javascript_plugin_flow = 1
-let g:graphql_javascript_tags = ["gql", "graphql", "Relay.QL"]
 
 "====================
 " SEARCH
@@ -309,25 +299,15 @@ let g:ctrlp_switch_buffer = 'et'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 "====================
-" Prettier
+" ALE
 "====================
-let g:ale_fix_on_save = 1
-
-let g:ale_linters = {
-\ 'javascript': ['flow', 'eslint'],
-\ 'typescript': ['tsserver', 'tslint'],
-\}
-
 let g:ale_fixers = {
-\  'javascript': ['prettier'],
-\  'typescript': ['prettier'],
-\  'yaml': ['prettier'],
-\  'markdown': ['prettier']
+\ 'javascript': ['prettier'],
+\ 'typescript': ['prettier'],
+\ 'typescriptreact': ['prettier'],
+\ 'javascriptreact': ['prettier'],
 \}
-
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
-let g:ale_echo_msg_format = '%linter%: %s [%severity%]'
+let g:ale_fix_on_save = 1
 
 "====================
 " Ultisnips

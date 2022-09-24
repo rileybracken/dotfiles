@@ -37,7 +37,7 @@
   "Non-ASCII Anti Aliased" : true,
   "Sync Title" : false,
   "Disable Window Resizing" : true,
-  "Description" : "Default",
+  "Description" : "Riley's iTerm",
   "Close Sessions On End" : true,
   "Jobs to Ignore" : [
     "rlogin",
@@ -294,7 +294,7 @@
     "Red Component" : 0.87450981140136719,
     "Blue Component" : 0.48627451062202454
   },
-  "Name" : "Default",
+  "Name" : "Riley's iTerm",
   "Blinking Cursor" : true,
   "Guid" : "94B3B723-D77B-4688-8D7A-A1B3E4F81DA0",
   "Idle Code" : 0,
