@@ -26,18 +26,11 @@ Plugin 'SirVer/ultisnips'
 Plugin 'dense-analysis/ale'
 
 " Syntax
-Plugin 'jxnblk/vim-mdx-js'
-Plugin 'digitaltoad/vim-pug'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'othree/html5.vim'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'heavenshell/vim-jsdoc'
-
-" React, Typescript, Graphql
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
-Plugin 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plugin 'jparise/vim-graphql'
 Plugin 'pantharshit00/vim-prisma'
 
@@ -59,8 +52,8 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-syntax enable
-colorscheme oceanicnext
+syntax on
+colorscheme onedark
 
 set backspace=2
 
@@ -75,6 +68,7 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set number
+set colorcolumn=80
 retab
 set expandtab
 set noswapfile
@@ -92,16 +86,6 @@ set splitright
 
 set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
 
-function! SynStack()
-	if !exists("*synstack")
-		return
-	endif
-	echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
-
-" Highlight 100th column
-" set colorcolumn=100
-
 " Ignore case for fast-typed commands.
 command Q q
 command Set set
@@ -116,47 +100,15 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " SYNTAX
 "====================
 au BufRead,BufNewFile *.jbuilder set filetype=ruby
-au BufRead,BufNewFile *.xaml :set filetype=xml
+au BufRead,BufNewFile *.xaml set filetype=xml
 au BufRead,BufNewFile *.conf set filetype=json
-au BufNewFile,BufRead *.prisma setfiletype graphql
+au BufNewFile,BufRead *.prisma set filetype=graphql
+
+let g:python_highlight_all = 1
 
 augroup FiletypeGroup
   autocmd!
 augroup END
-
-"====================
-" WRITING
-"====================
-au BufRead,BufNewFile *.md setlocal spell textwidth=60 linespace=7
-au FileType markdown nmap <silent> <leader>f ggVGgq
-
-let g:goyo_width = 75
-
-function! s:goyo_enter()
-  silent !tmux set status off
-  silent !tmux list-panes -F '\#F' | grep -q Z || tmux resize-pane -Z
-  set noshowmode
-  set noshowcmd
-  set scrolloff=999
-  Limelight
-endfunction
-
-function! s:goyo_leave()
-  silent !tmux set status on
-  silent !tmux list-panes -F '\#F' | grep -q Z && tmux resize-pane -Z
-  set showmode
-  set showcmd
-  set scrolloff=5
-  Limelight!
-endfunction
-
-autocmd! User GoyoEnter nested call <SID>goyo_enter()
-autocmd! User GoyoLeave nested call <SID>goyo_leave()
-
-let g:limelight_paragraph_span = 1  " Don't dim one par around the current one
-let g:limelight_priority       = -1 " Don't overrule hlsearch
-let g:limelight_conceal_ctermfg = 'gray'
-let g:limelight_conceal_ctermfg = 240
 
 "====================
 " SNIPPETS
@@ -234,12 +186,8 @@ map <Leader>ra :%s/
 map <Leader>w <C-w>w
 map <Leader>gw :!git add . && git commit -m 'WIP' && git push<cr>
 map <Leader>e :Explore<cr>
-map <Leader>gn :e ~/Dropbox (Underbelly)/notes<cr>
-map <Leader>gj :e ~/Dropbox (Underbelly)/notes/journal/<C-r>=strftime("%Y-%m-%d") . '.md'<cr><cr>
 map <Leader>gtf :vsp <C-R>=expand('%:p:h') . '/'<CR><cr>
 map <Leader>gts :vsp <C-R>=expand('%:p:h') . '/styles.js'<CR><cr>
-map <Leader>gtt :vsp <C-R>=expand('%:p:h') . '/__tests__/index.js'<CR><cr>
-map <Leader>gtn :vsp <C-R>=expand('%:p:h') . '/__tests__/__snapshots__/index.js.snap'<CR><cr>
 nmap <silent> <leader>tn :TestNearest<CR>
 nmap <silent> <leader>tc :TestFile<CR>
 nmap <silent> <leader>ta :TestSuite<CR>
@@ -306,8 +254,16 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier'],
 \ 'typescriptreact': ['prettier'],
 \ 'javascriptreact': ['prettier'],
+\ 'css': ['prettier'],
+\ 'json': ['prettier'],
+\ 'python': ['autopep8'],
+\}
+let g:ale_linters={
+\ 'python': ['pylint'],
 \}
 let g:ale_fix_on_save = 1
+let g:ale_python_auto_pipenv = 1
+let g:ale_python_pylint_auto_pipenv = 1
 
 "====================
 " Ultisnips

@@ -35,12 +35,3 @@ load-nvmrc() {
 }
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
-
-# export PATH="/usr/local/bin:$PATH"
-# export PATH="$HOME/.bin:$PATH"
-# source /Users/riley/.asdf/asdf.sh
-
-# Start rbenv
-eval "$(rbenv init -)"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-source /Users/rbracken/.asdf/asdf.sh
